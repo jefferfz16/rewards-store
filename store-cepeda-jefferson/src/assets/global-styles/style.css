@@ -16,11 +16,12 @@ a {
   --color-White: #fff;
   --color-Text: #808080;
   --color-Purple: #5a189a;
+  --color-Blue: #3f37c9;
   --color-Orange: #f48c06;
+  --color-Hover-Btn: #e0fbfc;
   --color-Back: #cddcdf;
   font-size: 16px;
 
-  --color-Blue: #00009C;
   --color-Blue-Back: #000087;
   --color-Blue-2: #00009Ce8;
   --color-Orange: #FF113C;
