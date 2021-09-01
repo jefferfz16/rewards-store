@@ -13,13 +13,19 @@ a {
 
 /*Paleta de colores*/
 :root {
+  --color-White: #fff;
+  --color-Text: #808080;
+  --color-Purple: #5a189a;
+  --color-Orange: #f48c06;
+  --color-Back: #cddcdf;
+  font-size: 16px;
+
   --color-Blue: #00009C;
   --color-Blue-Back: #000087;
   --color-Blue-2: #00009Ce8;
   --color-Orange: #FF113C;
   --color-Orange-2: #ff113ddc;
   --color-Green: #80b918;
-  --color-Text: #000000;
   --color-Shadow: #00000030;
   --color-Line: #A7BAC5;
   --color-Gray: #809BAB;
@@ -36,5 +42,4 @@ a {
   --color-Light-Green: #36C84B;
   --color-Light-Orange: #FDBC40;
   --color-Light-Red: #DF4744;
-  font-size: 16px;
 }
