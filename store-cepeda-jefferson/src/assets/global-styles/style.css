@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Raleway&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", "Raleway", Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Paleta de colores*/
+:root {
+  --color-Blue: #00009C;
+  --color-Blue-Back: #000087;
+  --color-Blue-2: #00009Ce8;
+  --color-Orange: #FF113C;
+  --color-Orange-2: #ff113ddc;
+  --color-Green: #80b918;
+  --color-Text: #000000;
+  --color-Shadow: #00000030;
+  --color-Line: #A7BAC5;
+  --color-Gray: #809BAB;
+  --color-Gray-2: #4E7185;
+  --color-Table: #A7BAC55c;
+  --color-Line-2: #A7BAC5e8;
+  --color-Back: #EDF3F6;
+  --color-Back-Taking: #ECF3FF;
+  --color-White: #fff;
+  --color-Available: #BDF195;
+  --color-Busy: #FAA1C1;
+  --color-Reserved: #FFF59f;
+  --color-Text-Table: #444150;
+  --color-Light-Green: #36C84B;
+  --color-Light-Orange: #FDBC40;
+  --color-Light-Red: #DF4744;
+  font-size: 16px;
+}
