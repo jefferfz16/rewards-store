@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Raleway&display=swap");
 
 * {
   padding: 0;
@@ -20,27 +20,29 @@ a {
   --color-Orange: #f48c06;
   --color-Hover-Btn: #e0fbfc;
   --color-Back: #cddcdf;
+  --box-shadow: rgb(45 45 45 / 5%) 0px 2px 2px, rgb(49 49 49 / 5%) 0px 4px 4px,
+    rgb(42 42 42 / 5%) 0px 8px 8px, rgb(32 32 32 / 5%) 0px 16px 16px,
+    rgb(49 49 49 / 5%) 0px 32px 32px, rgb(35 35 35 / 5%) 0px 64px 64px;
   font-size: 16px;
 
   --color-Blue-Back: #000087;
-  --color-Blue-2: #00009Ce8;
-  --color-Orange: #FF113C;
+  --color-Blue-2: #00009ce8;
   --color-Orange-2: #ff113ddc;
   --color-Green: #80b918;
   --color-Shadow: #00000030;
-  --color-Line: #A7BAC5;
-  --color-Gray: #809BAB;
-  --color-Gray-2: #4E7185;
-  --color-Table: #A7BAC55c;
-  --color-Line-2: #A7BAC5e8;
-  --color-Back: #EDF3F6;
-  --color-Back-Taking: #ECF3FF;
+  --color-Line: #a7bac5;
+  --color-Gray: #809bab;
+  --color-Gray-2: #4e7185;
+  --color-Table: #a7bac55c;
+  --color-Line-2: #a7bac5e8;
+  --color-Back: #edf3f6;
+  --color-Back-Taking: #ecf3ff;
   --color-White: #fff;
-  --color-Available: #BDF195;
-  --color-Busy: #FAA1C1;
-  --color-Reserved: #FFF59f;
+  --color-Available: #bdf195;
+  --color-Busy: #faa1c1;
+  --color-Reserved: #fff59f;
   --color-Text-Table: #444150;
-  --color-Light-Green: #36C84B;
-  --color-Light-Orange: #FDBC40;
-  --color-Light-Red: #DF4744;
+  --color-Light-Green: #36c84b;
+  --color-Light-Orange: #fdbc40;
+  --color-Light-Red: #df4744;
 }

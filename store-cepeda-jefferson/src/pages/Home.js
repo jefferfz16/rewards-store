@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Banner from "../components/Banner";
 
 /*components */
+import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
+import PrincipalProducts from "../components/sectionProducts/PrincipalProducts";
 
 export default function Home() {
     return (
@@ -11,7 +13,9 @@ export default function Home() {
             <Header />
             <Container>
                 <Banner />
+                <PrincipalProducts />
             </Container>
+            <Footer />
         </ContainerGeneral>
     )
 }
@@ -28,5 +32,6 @@ const Container = styled.div`
     width: 100%;
     flex: 1;
     overflow: auto;
+    z-index: 9;
     
 `
