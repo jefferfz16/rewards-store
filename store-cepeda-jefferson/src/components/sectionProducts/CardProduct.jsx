@@ -8,7 +8,7 @@ export default function CardProduct({data}) {
     <ContainerGeneral>
       <Image src={img.url}>
           <div className='icon'>
-            <span class="material-icons">shopping_bag</span>
+            <span className="material-icons">shopping_bag</span>
           </div>
       </Image>
       <Info>

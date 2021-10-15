@@ -8,6 +8,22 @@ import imagen2 from "../../assets/images/products/Alienware13-x2.png";
 import imagen3 from "../../assets/images/products/AmazonEchoDot-x2.png";
 import imagen4 from "../../assets/images/products/AmazonEcho-x2.png";
 
+const Url = "https://coding-challenge-api.aerolab.co/products";
+
+const headers = {
+    "Content-Type":"application/json",
+    Accept:"application/json",
+    Authorization:"Bearer",
+}
+let peticion = fetch(Url, headers);
+peticion
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    return console.log(data);
+  });
+
 export default function PrincipalProducts() {
   return (
     <ContainerGeneral>
@@ -23,11 +39,11 @@ export default function PrincipalProducts() {
         </div>
       </HeaderFilter>
       <ContainerProducts>
-          <Container>
-            {DataProducts.map((product) => {
+        <Container>
+          {DataProducts.map((product) => {
             return <CardProduct key={product._id} data={product} />;
-            })}
-          </Container>
+          })}
+        </Container>
       </ContainerProducts>
     </ContainerGeneral>
   );
@@ -57,7 +73,7 @@ const DataProducts = [
       hdUrl:
         "https://coding-challenge-api.aerolab.co/images/SamsungTabS2-x1.png",
     },
-  }
+  },
 ];
 
 /*Styles */
@@ -113,9 +129,9 @@ const ContainerProducts = styled.div`
 `;
 
 const Container = styled.div`
-    width: 100%;
-    /* max-width: 1440px; */
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-`
+  width: 100%;
+  /* max-width: 1440px; */
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+`;

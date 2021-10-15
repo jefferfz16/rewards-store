@@ -9,7 +9,7 @@ export default function Header() {
             <img className="logo" src={logo} alt="logo" />
             <UserDate>
                 <p>
-                    <span class="material-icons">person</span>
+                    <span className="material-icons">person</span>
                     Samuel Cepeda Bernal
                 </p>
                 <Currency>
@@ -19,11 +19,11 @@ export default function Header() {
             </UserDate>
             <div className="containerBtn">
                 <Btn>
-                    <span class="material-icons">emoji_events</span>
+                    <span className="material-icons">emoji_events</span>
                     <p>Ganar Monedas</p>
                 </Btn>
                 <Btn>
-                    <span class="material-icons">folder_special</span>
+                    <span className="material-icons">folder_special</span>
                     <p>Mis Productos</p>
                 </Btn>
             </div>
