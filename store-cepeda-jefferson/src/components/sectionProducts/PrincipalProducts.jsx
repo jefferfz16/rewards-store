@@ -1,30 +1,28 @@
-import React from "react";
+import React, {useEffect, useState } from "react";
 import styled from "styled-components";
 /*Components */
 import CardProduct from "./CardProduct";
-/*Images products */
-import imagen1 from "../../assets/images/products/AcerAspire-x2.png";
-import imagen2 from "../../assets/images/products/Alienware13-x2.png";
-import imagen3 from "../../assets/images/products/AmazonEchoDot-x2.png";
-import imagen4 from "../../assets/images/products/AmazonEcho-x2.png";
-
-const Url = "https://coding-challenge-api.aerolab.co/products";
-
-const headers = {
-    "Content-Type":"application/json",
-    Accept:"application/json",
-    Authorization:"Bearer",
-}
-let peticion = fetch(Url, headers);
-peticion
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    return console.log(data);
-  });
 
 export default function PrincipalProducts() {
+  const [dataProducts, setDataProducts] = useState([]);
+  const url = "https://coding-challenge-api.aerolab.co/products";
+  const headers = {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
+  };
+  /*Peticion data products */
+  useEffect(() => {
+    fetch(url, { headers })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setDataProducts(data);
+      });
+  }, []);
+  console.log(dataProducts);
   return (
     <ContainerGeneral>
       <HeaderFilter>
@@ -40,7 +38,7 @@ export default function PrincipalProducts() {
       </HeaderFilter>
       <ContainerProducts>
         <Container>
-          {DataProducts.map((product) => {
+          {dataProducts.map((product) => {
             return <CardProduct key={product._id} data={product} />;
           })}
         </Container>
@@ -49,9 +47,7 @@ export default function PrincipalProducts() {
   );
 }
 
-/*Data */
-
-const DataProducts = [
+/* const DataProducts = [
   {
     _id: "5a033eeb364bf301523e9b92",
     name: "Sandalia Pale Gold YSL",
@@ -74,7 +70,7 @@ const DataProducts = [
         "https://coding-challenge-api.aerolab.co/images/SamsungTabS2-x1.png",
     },
   },
-];
+]; */
 
 /*Styles */
 const ContainerGeneral = styled.div`
@@ -134,4 +130,7 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  @media(max-width: 1425px) {
+    justify-content: center;
+  }
 `;

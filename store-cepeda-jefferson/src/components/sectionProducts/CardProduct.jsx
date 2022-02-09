@@ -30,7 +30,7 @@ export default function CardProduct({data}) {
 
 const ContainerGeneral = styled.div`
   width: calc(100% / 5 - 16px);
-  /* min-width: 300px; */
+  min-width: 250px;
   height: 300px;
   border-radius: 5px;
   display: flex;
