@@ -1,28 +1,19 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
+import ProductsContext from "../../context/products/ProductsContext";
+import UserContext from "../../context/user/UserContext";
 /*Components */
 import CardProduct from "./CardProduct";
 
 export default function PrincipalProducts() {
-  const [dataProducts, setDataProducts] = useState([]);
-  const url = "https://coding-challenge-api.aerolab.co/products";
-  const headers = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
-  };
-  /*Peticion data products */
+  const { products, getProducts } = useContext(ProductsContext);
+  const { user } = useContext(UserContext);
+  console.log("llega", products)
+  console.log("llega usuarios", user)
   useEffect(() => {
-    fetch(url, { headers })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setDataProducts(data);
-      });
-  }, []);
-  console.log(dataProducts);
+    getProducts();
+  },[]);
+
   return (
     <ContainerGeneral>
       <HeaderFilter>
@@ -38,7 +29,7 @@ export default function PrincipalProducts() {
       </HeaderFilter>
       <ContainerProducts>
         <Container>
-          {dataProducts.map((product) => {
+          {products.map((product) => {
             return <CardProduct key={product._id} data={product} />;
           })}
         </Container>
@@ -130,7 +121,7 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  @media(max-width: 1425px) {
+  @media (max-width: 1425px) {
     justify-content: center;
   }
 `;

@@ -1,51 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
+import UserContext from "../context/user/UserContext";
 /*logo */
 import logo from "../assets/images/logo.svg";
 /*components */
 import Loading from "./sectionProducts/shared/Loading";
 
 export default function Header() {
-  const [user, setUser] = useState([]);
-  const url = "https://coding-challenge-api.aerolab.co/user/me";
-  const headers = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
-  };
+  const { user, getUser } = useContext(UserContext);
   useEffect(() => {
-    fetch(url, { headers })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data);
-      });
+    getUser();
   }, []);
 
-  console.log(user);
   return (
     <ContainerGeneral>
       <img className="logo" src={logo} alt="logo" />
-      <UserDate>
-        <p>
-          <span className="material-icons">person</span>
-          {user.name ?? (
-            <Loading type="spin" color="var(--color-Purple)" width="16px" />
-          )}
-        </p>
-        <Currency>
-          {user.length === 0 ? (
-            <Loading type="spin" color="var(--color-White)" width="16px" />
-          ) : (
-            <>
-              <span className="material-icons">monetization_on</span>
-              <p>{user.points}</p>
-            </>
-          )}
-        </Currency>
-      </UserDate>
+      {user.name === undefined ? (
+        <Loading type="spin" color="var(--color-Purple)" width="16px" />
+      ) : (
+        <UserDate>
+          <p>
+            <span className="material-icons">person</span>
+            {user.name}
+          </p>
+          <Currency>
+            <span className="material-icons">monetization_on</span>
+            <p>{user.points}</p>
+          </Currency>
+        </UserDate>
+      )}
       <div className="containerBtn">
         <Btn>
           <span className="material-icons">emoji_events</span>

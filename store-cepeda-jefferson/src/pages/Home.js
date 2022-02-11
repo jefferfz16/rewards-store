@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ProductsState from "../context/products/ProductsState";
 
 /*components */
 import Banner from "../components/Banner";
@@ -13,7 +14,9 @@ export default function Home() {
             <Header />
             <Container>
                 <Banner />
-                <PrincipalProducts />
+                <ProductsState>
+                    <PrincipalProducts />
+                </ProductsState>
             </Container>
             <Footer />
         </ContainerGeneral>
