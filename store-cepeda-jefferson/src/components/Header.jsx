@@ -1,20 +1,22 @@
 import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import UserContext from "../context/user/UserContext";
 /*logo */
 import logo from "../assets/images/logo.svg";
 /*components */
-import Loading from "./sectionProducts/shared/Loading";
+import Loading from "./shared/Loading";
 
 export default function Header() {
   const { user, getUser } = useContext(UserContext);
   useEffect(() => {
     getUser();
   }, []);
-
   return (
     <ContainerGeneral>
-      <img className="logo" src={logo} alt="logo" />
+      <NavLink to="/">
+        <img className="logo" src={logo} alt="logo" />
+      </NavLink>
       {user.name === undefined ? (
         <Loading type="spin" color="var(--color-Purple)" width="16px" />
       ) : (
@@ -30,14 +32,18 @@ export default function Header() {
         </UserDate>
       )}
       <div className="containerBtn">
-        <Btn>
-          <span className="material-icons">emoji_events</span>
-          <p>Ganar Monedas</p>
-        </Btn>
-        <Btn>
-          <span className="material-icons">folder_special</span>
-          <p>Mis Productos</p>
-        </Btn>
+        <NavLink activeclassname="active" to="/coins">
+          <Btn>
+            <span className="material-icons">emoji_events</span>
+            <p>More Coins</p>
+          </Btn>
+        </NavLink>
+        <NavLink activeclassname="active" to="/history">
+          <Btn>
+            <span className="material-icons">folder_special</span>
+            <p>My Products</p>
+          </Btn>
+        </NavLink>
       </div>
     </ContainerGeneral>
   );
@@ -68,6 +74,10 @@ const ContainerGeneral = styled.div`
       width: 100%;
       justify-content: space-between;
       margin-top: 0.5rem;
+    }
+    .active div {
+      background-color: var(--color-Hover-Btn);
+      color: var(--color-Blue);
     }
   }
 `;

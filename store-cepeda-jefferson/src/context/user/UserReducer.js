@@ -1,4 +1,4 @@
-import { GET_USER } from "../Types";
+import { GET_USER, GET_USER_HISTORY } from "../Types";
 
 export default (state, action) => {
   const { payload, type } = action;
@@ -9,6 +9,11 @@ export default (state, action) => {
         ...state,
         user: payload,
       };
+    case GET_USER_HISTORY:
+      return {
+        ...state,
+        history: payload,
+      }
     default:
       return state;
   }

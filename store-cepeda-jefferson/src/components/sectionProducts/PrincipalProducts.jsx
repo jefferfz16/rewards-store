@@ -1,15 +1,11 @@
 import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import ProductsContext from "../../context/products/ProductsContext";
-import UserContext from "../../context/user/UserContext";
 /*Components */
 import CardProduct from "./CardProduct";
 
 export default function PrincipalProducts() {
   const { products, getProducts } = useContext(ProductsContext);
-  const { user } = useContext(UserContext);
-  console.log("llega", products)
-  console.log("llega usuarios", user)
   useEffect(() => {
     getProducts();
   },[]);
@@ -69,6 +65,7 @@ const ContainerGeneral = styled.div`
   min-height: calc(100vh - 430px);
   display: flex;
   flex-direction: column;
+  margin-bottom: 31px;
 `;
 
 const HeaderFilter = styled.div`
