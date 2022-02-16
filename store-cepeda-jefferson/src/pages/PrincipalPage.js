@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import PrincipalProducts from "../components/sectionProducts/PrincipalProducts";
 import PrincipaLViewHistory from "../components/shoppingHistory/PricipalView";
+import Coins from "../components/points/Roulette";
 
 export default function PrincipalPage() {
   return (
@@ -16,6 +17,7 @@ export default function PrincipalPage() {
       <Header />
       <Routes>
         <Route exact path='/' element={<Home/>} />
+        <Route exact path='/coins' element={<Points/>} />
         <Route exact path='/history' element={<History/>} />
       </Routes>
       <Footer />
@@ -38,6 +40,14 @@ const History = () => {
   return (
     <Container>
       <PrincipaLViewHistory />
+    </Container>
+  );
+};
+
+const Points = () => {
+  return (
+    <Container>
+      <Coins />
     </Container>
   );
 };
