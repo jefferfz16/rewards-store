@@ -16,6 +16,7 @@ const ContainerGeneral = styled.div`
     height: 350px;
     padding: 10px 40px;
     position: relative;
+    background-color: var(--color-White);
     @media(max-width: 1023px) {
         padding: 5px 1rem;
         }

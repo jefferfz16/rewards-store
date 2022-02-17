@@ -151,6 +151,7 @@ const HeaderFilter = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
+  background-color: var(--color-White);
   @media(max-width: 767px) {
     flex-direction: column;
     height: auto;
