@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Wheel } from "react-custom-roulette";
+import { NavLink } from "react-router-dom";
 
 export default function Coins() {
   return (
     <ContainerGeneral>
+      <ContainerHead>
+        <NavLink to="/">
+          <p>
+            <span className="material-icons">arrow_back</span>
+            Back home
+          </p>
+        </NavLink>
+        <p>Coin Roulette</p>
+      </ContainerHead>
       <Roulette />
     </ContainerGeneral>
   );
@@ -102,7 +112,6 @@ function Roulette() {
   console.log("monedas", coins);
   return (
     <>
-      <h3>Coin Roulette</h3>
       {coins > 0 && !mustSpin ? (
         <Winner>
           CONGRATULATIONS!!! you have won <strong>{coins}</strong> coins.
@@ -148,14 +157,13 @@ const ContainerGeneral = styled.div`
   height: calc(100% - 31px);
   min-height: calc(100% - 31px);
   padding: 10px 40px;
-  color: var(--color-Text);
   > h3 {
     margin-bottom: 1rem;
   }
   & div:nth-child(3) {
     margin: 1rem 0 0;
     @media (max-width: 1023px) {
-        margin: 1rem 0;
+      margin: 1rem 0;
     }
   }
 `;
@@ -178,6 +186,31 @@ const Btn = styled.div`
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+  }
+`;
+
+const ContainerHead = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  > a {
+    color: var(--color-Text);
+    > p {
+      display: flex;
+      align-items: center;
+      > span {
+        margin-right: 0.5rem;
+      }
+    }
+    &:hover {
+      color: var(--color-Blue);
+    }
+  }
+  & > p:last-child {
+    font-weight: 600;
   }
 `;
 
