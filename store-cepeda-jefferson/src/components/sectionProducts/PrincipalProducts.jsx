@@ -19,6 +19,7 @@ export default function PrincipalProducts() {
     setStartProducts(16);
     setNumberProducts(32);
   };
+
   const arrowLeft = () => {
     setStartProducts(0);
     setNumberProducts(16);

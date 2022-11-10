@@ -1,4 +1,4 @@
-import { GET_USER, GET_USER_HISTORY } from "../Types";
+import { GET_USER, GET_USER_HISTORY, POST_POINTS, POST_REDEEM } from "../Types";
 
 export default (state, action) => {
   const { payload, type } = action;
@@ -13,6 +13,17 @@ export default (state, action) => {
       return {
         ...state,
         history: payload,
+      }
+    case POST_POINTS:
+      return {
+        ...state,
+        history: payload,
+      }
+    case POST_REDEEM:
+      console.log('paso por aca', payload)
+      return {
+        ...state,
+        redeem: payload,
       }
     default:
       return state;

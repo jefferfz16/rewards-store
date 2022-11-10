@@ -2,12 +2,20 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import UserContext from "../../context/user/UserContext";
+import { useState } from "react";
 
 export default function CardProduct({ data }) {
-  const { user } = useContext(UserContext);
-  console.log(user.points);
+  const { user, redeem, postRedeem } = useContext(UserContext);
+  const [msg, setMsg] = useState('')
   /*destructuring data */
-  const { name, cost, category, img } = data;
+  const { name, cost, category, img, _id } = data;
+
+  const HandlerRedeem = async () => {
+    await postRedeem(_id);
+    user.points -= cost
+    console.log('mensaje', redeem)
+  }
+
   return (
     <ContainerGeneral>
       <Image src={img.url}>
@@ -22,6 +30,7 @@ export default function CardProduct({ data }) {
         )}
       </Image>
       <Info>
+        <p>{msg}</p>
         <p>{category}</p>
         <p>{name}</p>
         <Cost>
@@ -34,7 +43,7 @@ export default function CardProduct({ data }) {
               <div className="redeem orange">Go win coins</div>
             </NavLink>
           ):(
-            <div className="redeem">Redeem now</div>
+            <div className="redeem" onClick={HandlerRedeem}>Redeem now</div>
           )}
         </Cost>
       </Info>

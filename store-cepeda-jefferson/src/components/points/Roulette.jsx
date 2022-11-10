@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { Wheel } from "react-custom-roulette";
 import { NavLink } from "react-router-dom";
+import UserContext from "../../context/user/UserContext";
 
 export default function Coins() {
   return (
@@ -90,26 +91,33 @@ function Roulette() {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [coins, setCoins] = useState();
+  const { user, postPoints } = useContext(UserContext);
   /*spin click */
   const handleSpinClick = () => {
     const newPrizeNumber = Math.floor(Math.random() * data.length);
     setPrizeNumber(newPrizeNumber);
     setMustSpin(true);
     handleCoins(newPrizeNumber);
+    console.log('price', prizeNumber)
   };
-
+  
   const handleCoins = (prizeNumber) => {
+    let amount = 0;
     if (prizeNumber === 2) {
-      setCoins(1000);
+      amount = 1000;
     } else if (prizeNumber === 5) {
-      setCoins(5000);
+      amount = 5000;
     } else if (prizeNumber === 8) {
-      setCoins(7500);
-    } else {
-      setCoins(0);
+      amount = 7500;
     }
+    setTimeout(()=>{
+      if(amount > 0){
+        user.points += amount
+        postPoints(amount);
+      }
+      setCoins(amount)
+    }, 8000)
   };
-  console.log("monedas", coins);
   return (
     <>
       {coins > 0 && !mustSpin ? (
@@ -135,13 +143,11 @@ function Roulette() {
         }}
       />
       <ContainerBtn>
-        {coins > 0 && !mustSpin ? (
-          <Btn>Save coins</Btn>
-        ) : !mustSpin ? (
+        {!mustSpin && (
           <Btn onClick={handleSpinClick}>
             {coins === 0 ? "Again spin" : "Spin"}
           </Btn>
-        ) : null}
+        )}
       </ContainerBtn>
     </>
   );

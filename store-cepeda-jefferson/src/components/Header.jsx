@@ -6,6 +6,7 @@ import UserContext from "../context/user/UserContext";
 import logo from "../assets/images/logo.svg";
 /*components */
 import Loading from "./shared/Loading";
+import { useState } from "react";
 
 export default function Header() {
   const { user, getUser } = useContext(UserContext);
