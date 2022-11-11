@@ -3,18 +3,22 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import UserContext from "../../context/user/UserContext";
 import { useState } from "react";
+import Loading from "../shared/Loading";
 
 export default function CardProduct({ data }) {
   const { user, redeem, postRedeem } = useContext(UserContext);
-  const [msg, setMsg] = useState('')
+  const [loading, setLoading] = useState(false);
   /*destructuring data */
   const { name, cost, category, img, _id } = data;
 
   const HandlerRedeem = async () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1800);
     await postRedeem(_id);
-    user.points -= cost
-    console.log('mensaje', redeem)
-  }
+    user.points -= cost;
+  };
 
   return (
     <ContainerGeneral>
@@ -30,7 +34,6 @@ export default function CardProduct({ data }) {
         )}
       </Image>
       <Info>
-        <p>{msg}</p>
         <p>{category}</p>
         <p>{name}</p>
         <Cost>
@@ -42,8 +45,14 @@ export default function CardProduct({ data }) {
             <NavLink to="/coins">
               <div className="redeem orange">Go win coins</div>
             </NavLink>
-          ):(
-            <div className="redeem" onClick={HandlerRedeem}>Redeem now</div>
+          ) : (
+            <div className="redeem" onClick={HandlerRedeem}>
+              {loading ? (
+                <Loading type="spin" color="var(--color-White)" width="16px" />
+              ) : (
+                "Reddem now"
+              )}
+            </div>
           )}
         </Cost>
       </Info>

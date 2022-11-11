@@ -20,7 +20,6 @@ export default (state, action) => {
         history: payload,
       }
     case POST_REDEEM:
-      console.log('paso por aca', payload)
       return {
         ...state,
         redeem: payload,

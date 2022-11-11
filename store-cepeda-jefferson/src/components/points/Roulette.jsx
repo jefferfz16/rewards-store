@@ -98,9 +98,8 @@ function Roulette() {
     setPrizeNumber(newPrizeNumber);
     setMustSpin(true);
     handleCoins(newPrizeNumber);
-    console.log('price', prizeNumber)
   };
-  
+
   const handleCoins = (prizeNumber) => {
     let amount = 0;
     if (prizeNumber === 2) {
@@ -110,13 +109,13 @@ function Roulette() {
     } else if (prizeNumber === 8) {
       amount = 7500;
     }
-    setTimeout(()=>{
-      if(amount > 0){
-        user.points += amount
+    setTimeout(() => {
+      if (amount > 0) {
+        user.points += amount;
         postPoints(amount);
       }
-      setCoins(amount)
-    }, 8000)
+      setCoins(amount);
+    }, 8000);
   };
   return (
     <>

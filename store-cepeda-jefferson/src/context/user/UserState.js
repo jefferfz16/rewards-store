@@ -8,7 +8,7 @@ export default function UserState(props) {
   const initialState = {
     user: {},
     history: [],
-    redeem: {message: 'vacio', status: 0},
+    redeem: {message: ' ', status: 0},
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
@@ -63,7 +63,6 @@ export default function UserState(props) {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
     };
     const res = await axios.post(url, { productId: productId }, { headers });
-    console.log('res', res)
     state.redeem.message = res.data.message
     state.redeem.status = res.status
     dispatch({

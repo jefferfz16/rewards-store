@@ -1,11 +1,14 @@
 import React, { useEffect, useContext, useState } from "react";
 import styled from "styled-components";
 import ProductsContext from "../../context/products/ProductsContext";
+import UserContext from "../../context/user/UserContext";
+import Toast from "../Toast";
 /*Components */
 import CardProduct from "./CardProduct";
 
 export default function PrincipalProducts() {
   const { products, getProducts } = useContext(ProductsContext);
+  const { redeem } = useContext(UserContext);
   useEffect(() => {
     getProducts();
   }, []);
@@ -67,9 +70,23 @@ export default function PrincipalProducts() {
       getProducts();
     }
   };
+  //show toast
+  const [show, setShow] = useState(false);
+  const closeToast = () => {
+    redeem.message = " ";
+    setShow(!show);
+  };
+
+  setTimeout(() => {
+    redeem.message = " ";
+    setShow(!show);
+  }, 5000);
 
   return (
     <ContainerGeneral>
+      {redeem.message != " " && (
+        <Toast label={redeem.message} close={closeToast} />
+      )}
       <HeaderFilter>
         <div className="filter">
           <p>Sort by:</p>
@@ -89,13 +106,21 @@ export default function PrincipalProducts() {
         <div className="pager">
           <span
             onClick={arrowLeft}
-            className={startProducts === 0 ? "material-icons opacity": "material-icons" }>
+            className={
+              startProducts === 0 ? "material-icons opacity" : "material-icons"
+            }
+          >
             chevron_left
           </span>
           <p>{numberProducts} of 32 products</p>
           <span
             onClick={arrowRight}
-            className={numberProducts === 32 ? "material-icons opacity": "material-icons"} >
+            className={
+              numberProducts === 32
+                ? "material-icons opacity"
+                : "material-icons"
+            }
+          >
             chevron_right
           </span>
         </div>
@@ -153,7 +178,7 @@ const HeaderFilter = styled.div`
   align-items: center;
   padding: 10px 40px;
   background-color: var(--color-White);
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     height: auto;
     padding: 10px;
@@ -169,14 +194,14 @@ const HeaderFilter = styled.div`
   .pager {
     display: flex;
     align-items: center;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       margin: 1rem 0;
       justify-content: space-between;
       width: 100%;
     }
     .opacity {
       opacity: 0;
-      &:hover{
+      &:hover {
         cursor: initial;
       }
     }
@@ -210,7 +235,7 @@ const ContainerProducts = styled.div`
   display: flex;
   justify-content: center;
   background-color: var(--color-Back);
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     padding: 10px;
   }
 `;
