@@ -9,9 +9,28 @@ import CardProduct from "./CardProduct";
 export default function PrincipalProducts() {
   const { products, getProducts } = useContext(ProductsContext);
   const { redeem } = useContext(UserContext);
+  /* const { data, status } = redeem; */
+  const [show, setShow] = useState(" ");
+  const [showState, setShowState] = useState(false);
+  const handlerClose = () => {
+    setShowState(false);
+    setShow(" ");
+  };
+
+  console.log("show", show);
+  console.log("redeem", redeem);
+  //show toast
+
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    setShow(redeem);
+    if (redeem === 200) {
+      setShowState(true);
+    }
+  }, [redeem]);
 
   const [startProducts, setStartProducts] = useState(0);
   const [numberProducts, setNumberProducts] = useState(16);
@@ -70,22 +89,18 @@ export default function PrincipalProducts() {
       getProducts();
     }
   };
-  //show toast
-  const [show, setShow] = useState(false);
-  const closeToast = () => {
-    redeem.message = " ";
-    setShow(!show);
-  };
-
-  setTimeout(() => {
-    redeem.message = " ";
-    setShow(!show);
-  }, 5000);
 
   return (
     <ContainerGeneral>
-      {redeem.message != " " && (
-        <Toast label={redeem.message} close={closeToast} />
+      {showState && (
+        <Toast
+          label={
+            show === 200
+              ? "Your product was successfully redeemed."
+              : "Algo salio mal."
+          }
+          close={handlerClose}
+        />
       )}
       <HeaderFilter>
         <div className="filter">
