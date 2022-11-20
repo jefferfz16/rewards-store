@@ -8,16 +8,14 @@ import CardProduct from "./CardProduct";
 
 export default function PrincipalProducts() {
   const { products, getProducts } = useContext(ProductsContext);
-  const { redeem } = useContext(UserContext);
+  const { redeem, HideToast } = useContext(UserContext);
   /* const { data, status } = redeem; */
-  const [show, setShow] = useState(" ");
   const [showState, setShowState] = useState(false);
   const handlerClose = () => {
+    HideToast();
     setShowState(false);
-    setShow(" ");
   };
 
-  console.log("show", show);
   console.log("redeem", redeem);
   //show toast
 
@@ -26,8 +24,7 @@ export default function PrincipalProducts() {
   }, []);
 
   useEffect(() => {
-    setShow(redeem);
-    if (redeem === 200) {
+    if (redeem.status === "exito" || redeem.status === "error") {
       setShowState(true);
     }
   }, [redeem]);
@@ -95,7 +92,7 @@ export default function PrincipalProducts() {
       {showState && (
         <Toast
           label={
-            show === 200
+            redeem.status === "exito"
               ? "Your product was successfully redeemed."
               : "Algo salio mal."
           }

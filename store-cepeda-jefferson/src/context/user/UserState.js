@@ -8,7 +8,7 @@ export default function UserState(props) {
   const initialState = {
     user: {},
     history: [],
-    redeem: ' ',
+    redeem: {},
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
@@ -62,11 +62,24 @@ export default function UserState(props) {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
     };
-    const res = await axios.post(url, { productId: productId }, { headers });
-    state.redeem = res.status;
+    try {
+      const res = await axios.post(url, { productId: productId }, { headers });
     dispatch({
       type: POST_REDEEM,
-      payload: res.status
+      payload: {message: res.data.message, status: 'exito'}
+    })
+    } catch (error) {
+      dispatch({
+        type: POST_REDEEM,
+        payload: {message: error.message, status: 'error'}
+      })
+    }
+  };
+  
+  const HideToast = async () => {
+    dispatch({
+      type: POST_REDEEM,
+      payload: {}
     })
   };
 
@@ -79,7 +92,8 @@ export default function UserState(props) {
         getUser,
         getHistory,
         postPoints,
-        postRedeem
+        postRedeem,
+        HideToast
       }}
     >
       {props.children}
