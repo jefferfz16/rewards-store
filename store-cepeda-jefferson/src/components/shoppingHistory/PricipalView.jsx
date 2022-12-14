@@ -29,7 +29,9 @@ export default function PrincipaLViewHistory() {
       <Head totalItems={history.length} />
       {history.length > 0 ? (
         <>
-          <p>Last {numberProducts} products redeemed of {history.length}</p>
+          <p>
+            Last {numberProducts} products redeemed of {history.length}
+          </p>
           {reduceHistory.map((item, index) => {
             return <Product key={index} data={item} />;
           })}
@@ -75,11 +77,11 @@ const ContainerProducts = styled.div`
     margin: 2rem 0;
     color: var(--color-Text);
   }
-  @media(max-width: 1023px) {
-      padding: 10px 1rem;
-      > p {
-          margin: 1rem 0;
-      }
+  @media (max-width: 1023px) {
+    padding: 10px 1rem;
+    > p {
+      margin: 1rem 0;
+    }
   }
 `;
 

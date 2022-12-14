@@ -14,13 +14,13 @@ import Coins from "../components/points/Roulette";
 export default function PrincipalPage() {
   return (
     <ContainerGeneral>
-      <Routes>
       <Header />
-        <Route path='/' element={<Home />} />
-        <Route exact path='/coins' element={<Points />} />
-        <Route exact path='/history' element={<History />} />
-      <Footer />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route path='/coins' element={<Points />} />
+        <Route path='/history' element={<History />} />
       </Routes>
+      <Footer />
     </ContainerGeneral>
   );
 }
