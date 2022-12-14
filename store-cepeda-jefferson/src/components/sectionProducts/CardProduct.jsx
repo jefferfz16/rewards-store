@@ -6,7 +6,7 @@ import { useState } from "react";
 import Loading from "../shared/Loading";
 
 export default function CardProduct({ data }) {
-  const { user, redeem, postRedeem } = useContext(UserContext);
+  const { user, postRedeem } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   /*destructuring data */
   const { name, cost, category, img, _id } = data;
@@ -16,8 +16,8 @@ export default function CardProduct({ data }) {
     setTimeout(() => {
       setLoading(false);
     }, 1800);
-    await postRedeem(_id);
     user.points -= cost;
+    await postRedeem(_id);
   };
 
   return (

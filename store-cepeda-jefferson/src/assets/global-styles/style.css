@@ -13,6 +13,8 @@ a {
 
 /*Paleta de colores*/
 :root {
+  --color-pricipal1: #333;
+  --color-pricipal2: #e61a6e;
   --color-White: #fff;
   --color-Text: #808080;
   --color-Purple: #5a189a;
@@ -21,12 +23,12 @@ a {
   --color-Green: #36c84b;
   --color-Hover-Btn: #e0fbfc;
   --color-Back: #cddcdf;
+  --color-Error: #ff113ddc;
   --box-shadow: 0px -2px 10px 0px rgba(52, 22, 75, 0.512);
   font-size: 16px;
 
   --color-Blue-Back: #000087;
   --color-Blue-2: #00009ce8;
-  --color-Orange-2: #ff113ddc;
   --color-Green: #80b918;
   --color-Shadow: #00000030;
   --color-Line: #a7bac5;

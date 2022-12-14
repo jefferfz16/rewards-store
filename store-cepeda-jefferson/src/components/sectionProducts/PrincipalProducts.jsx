@@ -16,13 +16,11 @@ export default function PrincipalProducts() {
     setShowState(false);
   };
 
-  console.log("redeem", redeem);
-  //show toast
-
   useEffect(() => {
     getProducts();
   }, []);
 
+  //show toast
   useEffect(() => {
     if (redeem.status === "exito" || redeem.status === "error") {
       setShowState(true);
@@ -89,16 +87,7 @@ export default function PrincipalProducts() {
 
   return (
     <ContainerGeneral>
-      {showState && (
-        <Toast
-          label={
-            redeem.status === "exito"
-              ? "Your product was successfully redeemed."
-              : "Algo salio mal."
-          }
-          close={handlerClose}
-        />
-      )}
+      {showState && <Toast status={redeem} close={handlerClose} />}
       <HeaderFilter>
         <div className="filter">
           <p>Sort by:</p>

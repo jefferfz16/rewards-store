@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const Toast = ({ label, close }) => {
+const Toast = ({ status, close }) => {
+  console.log(status);
   return (
-    <Container>
-      <p>{label}</p>
+    <Container status={status.status}>
+      <p>
+        {status.status === "error"
+          ? "Sorry, something went wrong."
+          : status.message}
+      </p>
       <span
         onClick={() => {
           close();
@@ -33,7 +38,8 @@ from {
 const Container = styled.div`
   position: fixed;
   z-index: 9999;
-  background-color: var(--color-Green);
+  background-color: ${(props) =>
+    props.status === "exito" ? "var(--color-Green)" : "var(--color-Error)"};
   padding: 10px 20px;
   width: 100%;
   bottom: 0;
@@ -52,6 +58,7 @@ const Container = styled.div`
   > span:hover {
     cursor: pointer;
     background-color: var(--color-White);
-    color: var(--color-Green);
+    color: ${(props) =>
+      props.status === "exito" ? "var(--color-Green)" : "var(--color-Error)"};
   }
 `;
