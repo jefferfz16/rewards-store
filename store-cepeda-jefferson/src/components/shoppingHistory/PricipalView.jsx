@@ -47,7 +47,7 @@ export default function PrincipaLViewHistory() {
 const Head = ({ totalItems }) => {
   return (
     <ContainerHead>
-      <NavLink to="/">
+      <NavLink to="/rewards-store">
         <p>
           <span className="material-icons">arrow_back</span>
           Back home

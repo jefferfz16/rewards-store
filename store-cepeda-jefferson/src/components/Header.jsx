@@ -15,7 +15,7 @@ export default function Header() {
   }, []);
   return (
     <ContainerGeneral>
-      <NavLink to="/">
+      <NavLink to="/rewards-store">
         <img className="logo" src={logo} alt="logo" />
       </NavLink>
       {user.name === undefined ? (
@@ -33,13 +33,13 @@ export default function Header() {
         </UserDate>
       )}
       <div className="containerBtn">
-        <NavLink activeclassname="active" to="/coins">
+        <NavLink activeclassname="active" to="/rewards-store/coins">
           <Btn>
             <span className="material-icons">emoji_events</span>
             <p>More Coins</p>
           </Btn>
         </NavLink>
-        <NavLink activeclassname="active" to="/history">
+        <NavLink activeclassname="active" to="/rewards-store/history">
           <Btn>
             <span className="material-icons">folder_special</span>
             <p>My Products</p>
