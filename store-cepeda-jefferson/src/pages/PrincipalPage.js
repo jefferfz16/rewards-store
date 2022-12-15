@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ProductsState from "../context/products/ProductsState";
 
 /*components */
@@ -15,7 +15,6 @@ export default function PrincipalPage() {
   return (
     <ContainerGeneral>
       <Header />
-      <Outlet />
       <Routes>
         <Route path="/rewards-store/" element={<Home />} />
         <Route path='/rewards-store/coins' element={<Points />} />
